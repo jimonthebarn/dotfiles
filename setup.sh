@@ -61,3 +61,13 @@ back() {
     cd $P
     export MPWD=$P
 }
+
+randomAlias() {
+    aliases_all="$(alias)"
+    aliases_size=$(alias | wc -l)
+
+    alias_index_selected=$(( ( RANDOM % $aliases_size )  + 1 ))
+
+    echo "Recommended alias of the day:"
+    echo "$aliases_all" | sed -n "$alias_index_selected"p
+}
