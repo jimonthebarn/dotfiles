@@ -13,14 +13,10 @@ createAlias() {
         if which $2 > /dev/null; then
                 echo "Alias $2 already exists."
         else
-                # create alias folder if not existent
-                if [ ! -d "~/.alias" ] 
-                then
-                    mkdir ~/.alias
-                fi
+                mkdir -p ~/.alias
 
                 echo "alias $2=\"$3\"" >> ~/.alias/.$1.sh
-                source ~/.alias/$1.sh
+                source ~/.alias/.$1.sh
         fi
     elif [[ $# -eq 2 ]]; then
             createAlias general $1 $2
@@ -41,4 +37,27 @@ gcdir() {
 
     git clone $REPO $CLONEPATH
     cd $CLONEPATH
+}
+
+up() {
+    LIMIT=$1
+    P=$PWD
+
+    for ((i=1; i <= LIMIT; i++))
+    do
+        P=$P/..
+    done
+    cd $P
+    export MPWD=$P
+}
+
+back() {
+    LIMIT=$1
+    P=$MPWD
+    for ((i=1; i <= LIMIT; i++))
+    do
+        P=${P%/..}
+    done
+    cd $P
+    export MPWD=$P
 }
