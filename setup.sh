@@ -68,6 +68,5 @@ randomAlias() {
 
     alias_index_selected=$(( ( RANDOM % $aliases_size )  + 1 ))
 
-    echo "Recommended alias of the day:"
     echo "$aliases_all" | sed -n "$alias_index_selected"p
 }
