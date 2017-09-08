@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------
 # Setup: add the following line to your ~/.zshrc or ~/.bashrc file
-# source ~/.alias/.setup
+# source ~/.alias/setup.sh
 # ----------------------------------------------------------------
 
 # source all alias files
