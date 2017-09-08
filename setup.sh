@@ -12,6 +12,10 @@ if [[ ! -a ~/.functions ]]; then
     ln -s ~/dotfiles/.functions ~/.functions
 fi
 
+if [[ ! -a ~/.gitexcludes ]]; then
+    ln -s ~/dotfiles/.gitexcludes ~/.gitexcludes
+fi
+
 #backup .zshrc and symlink
 if [[ -a ~/.zshrc ]]; then
     echo "Backing up existing ~/.zshrc"
