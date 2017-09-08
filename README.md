@@ -3,6 +3,6 @@ Personal collection of dotfiles I currently use in combionation with the zsh she
 
 Installation:
 
-- clone repository into your home directory.
+- clone repository into your home directory
 - make setup.sh executable e.g. chmod +x setup.sh
 - run setup.sh (this will create the required symlinks and backup a previously existing .zshrc to .zshrc.backup)
