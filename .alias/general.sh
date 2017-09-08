@@ -6,3 +6,4 @@ alias shuf="gshuf"
 
 alias cowalias="alias | shuf -n 1 | cowthink | lolcat"
 alias ll="ls -lhA"
+alias cd..="cd .."
