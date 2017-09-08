@@ -1,72 +1,21 @@
-# ----------------------------------------------------------------
-# Setup: add the following line to your ~/.zshrc or ~/.bashrc file
-# source ~/.alias/setup.sh
-# ----------------------------------------------------------------
+# create symlinks
+# ln -s /path/to/original /path/to/link
 
-# source all alias files
-for alias_file (~/.alias/.*.sh); do
-        source $alias_file
-done
+mkdir -p ~/dotfiles/.alias
 
-createAlias() {
-    if [[ $# -eq 3 ]]; then
-        if which $2 > /dev/null; then
-                echo "Alias $2 already exists."
-        else
-                mkdir -p ~/.alias
+if [[ ! -a ~/.alias ]]; then
+    ln -s ~/dotfiles/.alias ~/.alias
+fi
 
-                echo "alias $2=\"$3\"" >> ~/.alias/.$1.sh
-                source ~/.alias/.$1.sh
-        fi
-    elif [[ $# -eq 2 ]]; then
-            createAlias general $1 $2
-    else
-            echo "Usage: \tcreateAlias <fileName> <aliasName> <alias>"
-            echo "Example: \tcreateAlias npm nis \"npm install -save\""
-            return 1
-    fi
-}
+mkdir -p ~/dotfiles/.functions
+if [[ ! -a ~/.functions ]]; then
+    ln -s ~/dotfiles/.functions ~/.functions
+fi
 
-gcdir() {
-    REPO=$1
-    CLONEPATH=$2
+#backup .zshrc and symlink
+if [[ -a ~/.zshrc ]]; then
+    echo "Backing up existing ~/.zshrc"
+    mv ~/.zshrc ~/.zshrc.backup
+fi
 
-    if [ -z $CLONEPATH ]; then
-        CLONEPATH=${$(basename $1)/.git/}
-    fi
-
-    git clone $REPO $CLONEPATH
-    cd $CLONEPATH
-}
-
-up() {
-    LIMIT=$1
-    P=$PWD
-
-    for ((i=1; i <= LIMIT; i++))
-    do
-        P=$P/..
-    done
-    cd $P
-    export MPWD=$P
-}
-
-back() {
-    LIMIT=$1
-    P=$MPWD
-    for ((i=1; i <= LIMIT; i++))
-    do
-        P=${P%/..}
-    done
-    cd $P
-    export MPWD=$P
-}
-
-randomAlias() {
-    aliases_all="$(alias)"
-    aliases_size=$(alias | wc -l)
-
-    alias_index_selected=$(( ( RANDOM % $aliases_size )  + 1 ))
-
-    echo "$aliases_all" | sed -n "$alias_index_selected"p
-}
+ln -s ~/dotfiles/.zshrc ~/.zshrc
