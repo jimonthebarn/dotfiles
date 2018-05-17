@@ -55,7 +55,7 @@ DISABLE_UPDATE_PROMPT=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git thefuck brew osx cask adb colorize docker httpie spring zsh-completions grade git-extras git-flow colored-man github pip zsh-syntax-highlighting npm sublime sudo supervisor web-search)
+plugins=(git thefuck brew osx cask adb colorize docker httpie spring zsh-completions grade git-extras git-flow colored-man github pip zsh-syntax-highlighting npm sublime sudo supervisor web-search virtualenv)
 
 # completion function debugging
 zstyle ':completion:*' verbose yes
@@ -101,3 +101,11 @@ for function_file (~/.functions/*.sh); do
 done
 
 cowalias
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+#hardwire java 8
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
+# source for autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
