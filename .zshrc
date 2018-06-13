@@ -57,7 +57,7 @@ DISABLE_UPDATE_PROMPT=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git thefuck brew osx cask adb colorize docker httpie spring zsh-completions zsh-autosuggestions grade git-extras git-flow colored-man github pip zsh-syntax-highlighting npm sublime sudo supervisor web-search virtualenv)
+plugins=(git thefuck brew osx cask adb colorize docker httpie spring zsh-completions zsh-autosuggestions grade git-extras git-flow colored-man github pip zsh-syntax-highlighting npm sublime sudo supervisor web-search virtualenv history mvn)
 
 # completion function debugging
 zstyle ':completion:*' verbose yes
