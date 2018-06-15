@@ -5,3 +5,5 @@ alias j10="export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Con
 alias elastic="docker run -p 9200:9200 -p 9300:9300 -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch:6.2.4"alias exal="exa -abghHliS"
 alias exalg="exa -abghl --git --color=automatic"
 alias git=hub
+alias all_java_pids="pgrep java"
+alias kill_java="kill -9 $(pgrep java)"
