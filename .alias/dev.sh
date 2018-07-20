@@ -10,3 +10,4 @@ alias exat="exa --tree"
 alias git=hub
 alias all_java_pids="pgrep java"
 alias kill_java="kill -9 $(pgrep java)"
+alias mtest="mvn test -Dspring.profiles.active=test"
