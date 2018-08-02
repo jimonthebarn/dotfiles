@@ -133,3 +133,7 @@ idea() {
         #popd > /dev/null
     fi
 }
+
+findGrep() {
+    find . -name "$1" -exec grep "$2" '{}' \; -print
+}
