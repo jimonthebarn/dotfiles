@@ -137,6 +137,10 @@ idea() {
     fi
 }
 
+pofo() {
+    oc get pods | grep $1 | grep Running | sed 's/^\([^ ][^ ]*\) .*/oc port-forward \1 8080/'
+}
+
 findGrep() {
     find . -name "$1" -exec grep "$2" '{}' \; -print
 }
