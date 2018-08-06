@@ -118,12 +118,15 @@ idea() {
 
         if [ -d ".idea" ]; then
             # Handle .idea folders
+            echo "Opening based on .idea folder"
             open -a "$IDEA" .
-        elif [ -f *.ipr ]; then
+        elif ls *.ipr 1> /dev/null 2>&1; then
             # Handle idea project files
+            echo "Opening based on *.ipr"
             open -a "$IDEA" `ls -1d *.ipr | head -n1`
-        elif [ -f pom.xml ]; then
+        elif [ -f "pom.xml" ]; then
             # Handle pom.xml
+            echo "Opening based on pom.xml"
             open -a "$IDEA" "pom.xml"
         else
             # Can't do anything else, just open Intellij
