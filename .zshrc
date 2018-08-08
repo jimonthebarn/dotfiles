@@ -55,7 +55,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git thefuck brew osx cask adb colorize docker httpie spring zsh-completions zsh-autosuggestions grade git-extras git-flow colored-man github pip zsh-syntax-highlighting npm sublime sudo supervisor web-search virtualenv history mvn)
+plugins=(autojump oc git thefuck brew osx cask adb colorize docker httpie spring zsh-completions zsh-autosuggestions grade git-extras git-flow colored-man github pip zsh-syntax-highlighting npm sublime sudo supervisor web-search virtualenv history mvn)
 
 # completion function debugging
 zstyle ':completion:*' verbose yes
@@ -110,5 +110,3 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 export GRADLE_HOME=$(brew info gradle | grep /usr/local/Cellar/gradle | awk '{print $1}')
 
-# source for autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh

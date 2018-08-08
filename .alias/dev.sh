@@ -11,3 +11,4 @@ alias git=hub
 alias all_java_pids="pgrep java"
 alias kill_java="kill -9 $(pgrep java)"
 alias mtest="mvn test -Dspring.profiles.active=test"
+alias oclogin="oc login --token=PPt6PgoZY1QwWhLlB7xqKJHJY7HNbx-79yJ18-JtSvE --server=https://master-aazp001.appagile.io:8443"
