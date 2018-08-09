@@ -1,0 +1,11 @@
+alias zshconf="sublime ~/.zshrc"
+alias omzconf="sublime ~/.oh-my-zsh"
+alias src="source ~/.zshrc"
+alias mkdir="mkdir -pv"
+alias shuf="gshuf"
+
+alias random_alias="alias | shuf -n 1"
+alias cowalias="random_alias | cowthink | lolcat"
+alias ll="ls -lhA"
+alias cd..="cd .."
+alias browsh="docker run -it browsh/browsh"
