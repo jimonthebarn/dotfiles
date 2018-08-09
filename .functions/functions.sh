@@ -9,7 +9,7 @@ createAlias() {
     elif [[ $# -eq 2 ]]; then
         createAlias general $1 $2
     else
-        echo "Usage: \tcreateAlias <fileName> <aliasName> <alias>"
+        echo "Usage: \tcreateAlias <fileNameWithoutExtension> <aliasName> <alias>"
         echo "Example: \tcreateAlias npm nis \"npm install -save\""
         return 1
     fi
@@ -72,7 +72,12 @@ killJava() {
 }
 
 killAll() {
-    for pid in $(pgrep $1); do kill -9 $pid; done
+    if [[ $# -eq 1 ]]; then
+        for pid in $(pgrep $1); do kill -9 $pid; done
+    else
+        echo "Usage: \t\tkillAll <process name>"
+        echo "Example: \tkillAll java"
+    fi
 }
 
 setJdk() {
@@ -138,9 +143,19 @@ idea() {
 }
 
 pofo() {
-    oc get pods | grep $1 | grep Running | sed 's/^\([^ ][^ ]*\) .*/oc port-forward \1 8080/'
+    if [[ $# -eq 1 ]]; then
+        oc get pods | grep $1 | grep Running | sed 's/^\([^ ][^ ]*\) .*/oc port-forward \1 8080/'
+    else
+        echo "Usage: \t\pofo <podname>"
+        echo "Example: \tpofo canned"
+    fi
 }
 
 findGrep() {
-    find . -name "$1" -exec grep "$2" '{}' \; -print
+    if [[ $# -eq 2 ]]; then
+        find . -name "$1" -exec grep "$2" '{}' \; -print
+    else
+        echo "Usage: \t\tfindGrep <fileName> <text>"
+        echo "Example: \tfindGrep license.txt 'lgpl'"
+    fi
 }
