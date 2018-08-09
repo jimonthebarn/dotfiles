@@ -1,3 +1,12 @@
+#	                ██
+#	               ░██
+#	 ██████  ██████░██      ██████  █████
+#	░░░░██  ██░░░░ ░██████ ░░██░░█ ██░░░██
+#	   ██  ░░█████ ░██░░░██ ░██ ░ ░██  ░░
+#	  ██    ░░░░░██░██  ░██ ░██   ░██   ██
+#	 ██████ ██████ ░██  ░██░███   ░░█████
+#	░░░░░░ ░░░░░░  ░░   ░░ ░░░     ░░░░░
+
 POWERLEVEL9K_MODE='nerdfont-complete'
 export TERM="xterm-256color"
 
@@ -49,13 +58,42 @@ COMPLETION_WAITING_DOTS="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=~/dotfiles/oh-my-zsh
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump oc git thefuck brew osx cask adb colorize docker httpie spring zsh-completions zsh-autosuggestions grade git-extras git-flow colored-man github pip zsh-syntax-highlighting npm sublime sudo supervisor web-search virtualenv history mvn z)
+# Which plugins would you like to load? (plugins can be found in ~/dotfiles/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/dotfiles/oh-my-zsh/plugins/
+plugins=(
+	autojump
+	oc
+	git
+	thefuck
+	brew
+	osx
+	cask
+	adb
+	colorize
+	docker
+	httpie
+	spring
+	zsh-completions
+	zsh-autosuggestions
+	grade
+	git-extras
+	git-flow
+	colored-man
+	github
+	pip
+	zsh-syntax-highlighting
+	npm
+	sublime
+	sudo
+	supervisor
+	web-search
+	virtualenv
+	history
+	mvn
+	z
+)
 
 # completion function debugging
 zstyle ':completion:*' verbose yes
@@ -93,11 +131,11 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # source all alias files
-for alias_file (~/.alias/*.sh); do
+for alias_file (~/dotfiles/alias/*.sh); do
         source $alias_file
 done
 
-for function_file (~/.functions/*.sh); do
+for function_file (~/dotfiles/functions/*.sh); do
         source $function_file
 done
 
