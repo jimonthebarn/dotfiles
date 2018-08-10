@@ -159,3 +159,7 @@ findGrep() {
         echo "Example: \tfindGrep license.txt 'lgpl'"
     fi
 }
+
+port() {
+    sudo lsof -i tcp:$1 
+}
