@@ -91,7 +91,7 @@ setJdk() {
     fi
 }
 
-idea() {
+idea_alt() {
     # Determine where intellij is installed
     DEFAULT_IDEA_TOOLBOX_LOCATION=$(ls -1d ~/Library/Application\ Support/JetBrains/Toolbox/apps/*/*/*/IntelliJ\ IDEA.app 2>&1 | tail -n1)
     DEFAULT_IDEA_LOCATION=$(ls -1d /Applications/IntelliJ\ IDEA.app 2>&1 | tail -n1)
