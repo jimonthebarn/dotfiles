@@ -58,12 +58,12 @@ Maid.rules do
 	rule 'Updating dotfiles submodules' do
 		`cd ~/dotfiles && git submodule foreach git pull origin master`
 	end
-	rule 'Updating gems ' do
-		`sudo gem update`
-	end
-	rule 'Update npm' do
-		`sudo npm -g update`
-	end
+	#rule 'Updating gems ' do
+	#	`sudo gem update`
+	#end
+	#rule 'Update npm' do
+	#	`sudo npm -g update`
+	#end
 
 	#
 	# Downloads Folder Stuff
@@ -107,4 +107,11 @@ Maid.rules do
 		end
 	end
 
+	rule 'Mac OS X applications in zip files' do
+			found = dir('~/Downloads/*.zip').select { |path|
+			zipfile_contents(path).any? { |c| c.match(/\.app$/) }
+			}
+
+			trash(found)
+	end
 end

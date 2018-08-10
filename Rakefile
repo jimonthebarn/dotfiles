@@ -11,7 +11,7 @@ require 'rake'
 require 'fileutils'
 
 # These are all the files we want to symlink to ~
-FILES = '.gitconfig .gitexcludes .zshrc .maid'
+FILES = '.oh-my-zsh .gitconfig .gitexcludes .zshrc .maid'
 
 
 task :default => 'install'
