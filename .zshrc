@@ -96,12 +96,12 @@ plugins=(
 )
 
 # completion function debugging
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:descriptions' format '%B%d%b'
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:warnings' format 'No matches for: %d'
-zstyle ':completion:*' group-name ''
-ZSH_DISABLE_COMPFIX=false
+#zstyle ':completion:*' verbose yes
+#zstyle ':completion:*:descriptions' format '%B%d%b'
+#zstyle ':completion:*:messages' format '%d'
+#zstyle ':completion:*:warnings' format 'No matches for: %d'
+#zstyle ':completion:*' group-name ''
+#ZSH_DISABLE_COMPFIX=false
 
 source $ZSH/oh-my-zsh.sh
 
