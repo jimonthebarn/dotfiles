@@ -11,6 +11,6 @@ alias git=hub
 alias all_java_pids="pgrep java"
 alias kill_java="kill -9 $(pgrep java)"
 alias mtest="mvn test -Dspring.profiles.active=test"
-alias oclogin="oc login --token=PPt6PgoZY1QwWhLlB7xqKJHJY7HNbx-79yJ18-JtSvE --server=https://master-aazp001.appagile.io:8443"
 alias glfm="git log origin/master ^master"
 alias gblc="for branch in   origin/master; do echo -e 2018-08-09 14:47:01 +0200 25 minutes ago Benjamin Roth 	; done | sort -r"
+alias gh="open `git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@'`| head -n1"

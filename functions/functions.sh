@@ -3,7 +3,7 @@ createAlias() {
         if which $2 > /dev/null; then
             echo "Alias $2 already exists."
         else
-            echo "alias $2=\"$3\"" >> ~/.alias/$1.sh
+            echo "alias $2=\"$3\"" >> ~/dotfiles/alias/$1.sh
             source ~/.alias/$1.sh
         fi
     elif [[ $# -eq 2 ]]; then
