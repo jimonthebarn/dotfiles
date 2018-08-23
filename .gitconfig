@@ -1,5 +1,5 @@
 [include]
-  path = .gitconfig-work
+  path = ~/darkroom/.gitconfig-work
 
 [web]
    browser = google-chrome
