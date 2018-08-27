@@ -58,7 +58,7 @@ COMPLETION_WAITING_DOTS="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=~/dotfiles/zsh-custom/
+ZSH_CUSTOM=/Users/$USER/dotfiles/zsh-custom
 
 # Which plugins would you like to load? (plugins can be found in ~/dotfiles/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/dotfiles/zsh-custom/plugins/

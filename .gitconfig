@@ -6,3 +6,6 @@
 
 [core]
     editor = sublime --project ~/dotfiles/.gitconfig.sublime-project --wait
+[user]
+	name = Benjamin Roth
+	email = roth.benjamin@gmail.com
