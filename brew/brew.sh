@@ -29,6 +29,7 @@ brew install httpie
 brew install maven
 brew install gradle
 brew install ack
+brew install direnv
 
 echo "Cleaning up brew"
 brew cleanup
