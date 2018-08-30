@@ -148,5 +148,9 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 export GRADLE_HOME=$(brew info gradle | grep /usr/local/Cellar/gradle | awk '{print $1}')
 
+source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 eval "$(direnv hook zsh)"
 
