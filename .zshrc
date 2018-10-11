@@ -154,5 +154,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 eval "$(direnv hook zsh)"
 
-#zexport VIRTUAL_ENV_DISABLE_PROMPT=0
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
