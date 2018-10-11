@@ -91,57 +91,6 @@ setJdk() {
     fi
 }
 
-idea_alt() {
-    # Determine where intellij is installed
-    DEFAULT_IDEA_TOOLBOX_LOCATION=$(ls -1d ~/Library/Application\ Support/JetBrains/Toolbox/apps/*/*/*/IntelliJ\ IDEA.app 2>&1 | tail -n1)
-    DEFAULT_IDEA_LOCATION=$(ls -1d /Applications/IntelliJ\ IDEA.app 2>&1 | tail -n1)
-
-    IDEA=""
-    if [[ $DEFAULT_IDEA_TOOLBOX_LOCATION = *"No such file or directory"* ]]; then
-        IDEA="$DEFAULT_IDEA_LOCATION"
-    elif [[ $DEFAULT_IDEA_LOCAITON = *"No such file or directory"* ]]; then
-        echo "No intellij installation found, cannot proceed"
-        exit 1
-    else
-        IDEA="$DEFAULT_IDEA_TOOLBOX_LOCATION"
-    fi
-
-    # Check current working directory
-    wd=""
-    if [ -z "$1" ]; then
-        wd=$(pwd)
-    elif [ -d "$1" ]; then
-        wd=$(ls -1d "$1" 2>&1 | head -n1)
-    fi
-
-    # Check if we were given a file
-    if [ -f "$1" ]; then
-        open -a "$IDEA" "$1"
-    else
-        # Check working directory
-        #pushd $wd > /dev/null
-
-        if [ -d ".idea" ]; then
-            # Handle .idea folders
-            echo "Opening based on .idea folder"
-            open -a "$IDEA" .
-        elif ls *.ipr 1> /dev/null 2>&1; then
-            # Handle idea project files
-            echo "Opening based on *.ipr"
-            open -a "$IDEA" `ls -1d *.ipr | head -n1`
-        elif [ -f "pom.xml" ]; then
-            # Handle pom.xml
-            echo "Opening based on pom.xml"
-            open -a "$IDEA" "pom.xml"
-        else
-            # Can't do anything else, just open Intellij
-            open "$IDEA"
-        fi
-
-        #popd > /dev/null
-    fi
-}
-
 pofo() {
     if [[ $# -eq 1 ]]; then
         oc get pods | grep $1 | grep Running | sed 's/^\([^ ][^ ]*\) .*/oc port-forward \1 8080/'
@@ -162,4 +111,13 @@ findGrep() {
 
 port() {
     sudo lsof -i tcp:$1 
+}
+
+sh() {
+    url="https://smarthub-wbench.wesp.telekom.net/gitlab/search?search=$1&group_id=&project_id=&repository_ref="
+    open_command "$url"
+}
+
+iss() {
+    open_command "https://gard.telekom.de/gard/secure/QuickSearch.jspa?searchString=$1"
 }
