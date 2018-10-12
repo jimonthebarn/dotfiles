@@ -125,18 +125,18 @@ port() {
 
 sh() {
     if [[ $# -eq 0 ]]; then
-        curr_path=$(basename ~+)
-        url="https://smarthub-wbench.wesp.telekom.net/gitlab/search?search=$curr_path&group_id=&project_id=&repository_ref="
-        open_command "$url"
+        query=$(basename ~+)
     elif [[ $# -eq 1 ]]; then
-        url="https://smarthub-wbench.wesp.telekom.net/gitlab/search?search=$1&group_id=&project_id=&repository_ref="
-        open_command "$url"
+        query=$1
     else
         echo "Usage: \tsh"
         echo "Usage: \tsh <project name>"
-        echo "Example: \tsh skill-canned'"
+        echo "Example: \tsh skill-canned-response-python'"
         return 1
     fi
+
+    url="https://smarthub-wbench.wesp.telekom.net/gitlab/search?search=$query&group_id=&project_id=&repository_ref="
+    open_command "$url"
 }
 
 iss() {
