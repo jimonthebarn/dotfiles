@@ -10,7 +10,17 @@ createAlias() {
         createAlias general "$1 $2"
     else
         echo "Usage: \tcreateAlias <fileNameWithoutExtension> <aliasName> <alias>"
-        echo "Example: \tcreateAlias npm nis \"npm install -save\""
+        echo "Example: \tcreateAlias npm nis 'npm install -save'"
+        return 1
+    fi
+}
+
+addQuote() {
+    if [[ $# -eq 1 ]]; then
+        echo "$1" >> ~/dotfiles/quotes.txt
+    else
+        echo "Usage: \taddQuote '<your quote>'"
+        echo "Example: \taddQuote 'Dress for the job you want, not the job you have.'"
         return 1
     fi
 }
@@ -114,8 +124,19 @@ port() {
 }
 
 sh() {
-    url="https://smarthub-wbench.wesp.telekom.net/gitlab/search?search=$1&group_id=&project_id=&repository_ref="
-    open_command "$url"
+    if [[ $# -eq 0 ]]; then
+        curr_path=$(basename ~+)
+        url="https://smarthub-wbench.wesp.telekom.net/gitlab/search?search=$curr_path&group_id=&project_id=&repository_ref="
+        open_command "$url"
+    elif [[ $# -eq 1 ]]; then
+        url="https://smarthub-wbench.wesp.telekom.net/gitlab/search?search=$1&group_id=&project_id=&repository_ref="
+        open_command "$url"
+    else
+        echo "Usage: \tsh"
+        echo "Usage: \tsh <project name>"
+        echo "Example: \tsh skill-canned'"
+        return 1
+    fi
 }
 
 iss() {
