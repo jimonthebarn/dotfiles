@@ -135,7 +135,7 @@ sh() {
         return 1
     fi
 
-    url="https://smarthub-wbench.wesp.telekom.net/gitlab/search?search=$query&group_id=&project_id=&repository_ref="
+    url="https://smarthub-wbench.wesp.telekom.net/gitlab/search?search=$query"
     open_command "$url"
 }
 
