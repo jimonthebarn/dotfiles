@@ -131,11 +131,15 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # source all alias files
+#echo 'Sourcing aliases'
 for alias_file (~/dotfiles/alias/*.sh); do
+		#echo 'Sourcing ' $alias_file
         source $alias_file
 done
 
+#echo 'Sourcing functions'
 for function_file (~/dotfiles/functions/*.sh); do
+		#echo 'Sourcing ' $function_file
         source $function_file
 done
 
@@ -158,3 +162,5 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi

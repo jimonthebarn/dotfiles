@@ -1,16 +1,16 @@
-alias javaVersions="/usr/libexec/java_home -V"
-alias j8="export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home; java -version"
-alias j9="export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home; java -version"
-alias j10="export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home; java -version"
-alias elastic="docker run -p 9200:9200 -p 9300:9300 -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch:6.2.4"alias exal="exa -abghHliS"
-alias exa="exa --git --color=always --color-scale --header --long --group --time-style=long-iso --ignore-glob=target"
-alias exan="exa --sort=newest"
-alias exas="exa --sort=size"
-alias exat="exa --tree"
-alias git=hub
-alias all_java_pids="pgrep java"
-alias kill_java="kill -9 $(pgrep java)"
-alias mtest="mvn test -Dspring.profiles.active=test"
-alias glfm="git log origin/master ^master"
-alias gblc="for branch in   origin/master; do echo -e 2018-08-09 14:47:01 +0200 25 minutes ago Benjamin Roth 	; done | sort -r"
-alias gh="open `git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@'`| head -n1"
+alias javaVersions='/usr/libexec/java_home -V'
+alias j8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home; java -version'
+alias j9='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home; java -version'
+alias j10='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home; java -version'
+alias elastic='docker run -p 9200:9200 -p 9300:9300 -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch:6.2.4"alias exal="exa -abghHliS'
+alias exa='exa --git --color=always --color-scale --header --long --group --time-style=long-iso --ignore-glob=target'
+alias exan='exa --sort=newest'
+alias exas='exa --sort=size'
+alias exat='exa --tree'
+alias git='hub'
+alias all_java_pids='pgrep java'
+alias kill_java='kill -9 $(pgrep java)'
+alias mtest='mvn test -Dspring.profiles.active=test'
+alias glfm='git log origin/master ^master'
+alias gblc='for branch in   origin/master; do echo -e 2018-08-09 14:47:01 +0200 25 minutes ago Benjamin Roth 	; done | sort -r'
+#alias gh='open `git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@'`| head -n1'
