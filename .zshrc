@@ -7,11 +7,17 @@
 #	 ██████ ██████ ░██  ░██░███   ░░█████
 #	░░░░░░ ░░░░░░  ░░   ░░ ░░░     ░░░░░
 
+# Path to dotfiles repo
+export DOTFILES="$(dirname "$(readlink "$HOME/.zshrc")")"
+
+# Enable interactive comments
+setopt interactivecomments
+
 POWERLEVEL9K_MODE='nerdfont-complete'
 export TERM="xterm-256color"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/Users/ben/AppLauncher:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$USER/.oh-my-zsh
@@ -58,7 +64,7 @@ COMPLETION_WAITING_DOTS="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=/Users/$USER/dotfiles/zsh-custom
+ZSH_CUSTOM=$DOTFILES/zsh-custom
 
 # Which plugins would you like to load? (plugins can be found in ~/dotfiles/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/dotfiles/zsh-custom/plugins/
@@ -83,13 +89,13 @@ plugins=(
 	colored-man
 	github
 	pip
+	pipenv
 	zsh-syntax-highlighting
 	npm
 	sublime
 	sudo
 	supervisor
 	web-search
-	virtualenv
 	history
 	mvn
 	z
@@ -132,14 +138,12 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 #
 # source all alias files
 #echo 'Sourcing aliases'
-for alias_file (~/dotfiles/alias/*.sh); do
-		#echo 'Sourcing ' $alias_file
+for alias_file ($DOTFILES/alias/*.sh); do
         source $alias_file
 done
 
 #echo 'Sourcing functions'
-for function_file (~/dotfiles/functions/*.sh); do
-		#echo 'Sourcing ' $function_file
+for function_file ($DOTFILES/functions/*.sh); do
         source $function_file
 done
 
@@ -160,7 +164,7 @@ eval "$(direnv hook zsh)"
 
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 
-#eval "$(pyenv init -)"
+eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
 
-#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
