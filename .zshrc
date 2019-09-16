@@ -69,8 +69,14 @@ ZSH_CUSTOM=$DOTFILES/zsh-custom
 # Which plugins would you like to load? (plugins can be found in ~/dotfiles/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/dotfiles/zsh-custom/plugins/
 plugins=(
-	autojump
+	#autojump
+	bgnotify
+	bower
+	colorize
 	oc
+	encode64
+	#globalias
+	fasd
 	git
 	thefuck
 	brew
@@ -79,26 +85,28 @@ plugins=(
 	adb
 	colorize
 	docker
+	kubectl
 	httpie
 	spring
-	zsh-completions
-	zsh-autosuggestions
-	grade
+	themes
+	gradle
 	git-extras
 	git-flow
-	colored-man
+	golang
 	github
 	pip
 	pipenv
-	zsh-syntax-highlighting
 	npm
+	sdk
 	sublime
 	sudo
 	supervisor
 	web-search
 	history
 	mvn
-	z
+	zsh-aliases-exa
+	kubectl
+	#z
 )
 
 # completion function debugging
@@ -168,3 +176,13 @@ eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
 
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+# set iterm titel to current dir
+precmd() {
+  # sets the tab title to current dir
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/ben/.sdkman"
+[[ -s "/Users/ben/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ben/.sdkman/bin/sdkman-init.sh"

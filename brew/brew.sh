@@ -30,6 +30,7 @@ brew install maven
 brew install gradle
 brew install ack
 brew install direnv
+brew install terminal-notifier
 
 echo "Cleaning up brew"
 brew cleanup
