@@ -7,13 +7,24 @@
 #	 ██████ ██████ ░██  ░██░███   ░░█████
 #	░░░░░░ ░░░░░░  ░░   ░░ ░░░     ░░░░░
 
-# Path to dotfiles repo
+################################
+# Custom
+################################
 export DOTFILES="$(dirname "$(readlink "$HOME/.zshrc")")"
 
 # Enable interactive comments
 setopt interactivecomments
 
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+
 POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
+#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
+#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
+
 export TERM="xterm-256color"
 
 # If you come from bash you might have to change your $PATH.
@@ -27,22 +38,10 @@ export ZSH=/Users/$USER/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT=true
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -53,77 +52,60 @@ DISABLE_UPDATE_PROMPT=true
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$DOTFILES/zsh-custom
 
 # Which plugins would you like to load? (plugins can be found in ~/dotfiles/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/dotfiles/zsh-custom/plugins/
 plugins=(
+	adb
 	#autojump
 	bgnotify
 	bower
-	colorize
-	oc
-	encode64
-	#globalias
-	fasd
-	git
-	thefuck
 	brew
-	osx
 	cask
-	adb
+	colored-man-pages
+	colorize
 	colorize
 	docker
-	kubectl
-	httpie
-	spring
-	themes
-	gradle
+	encode64
+	fasd
+	git
 	git-extras
 	git-flow
-	golang
 	github
+	#globalias
+	golang
+	gradle
+	history
+	httpie
+	kubectl
+	kubectl
+	mvn
+	npm
+	oc
+	osx
 	pip
 	pipenv
-	npm
+	safe-paste
 	sdk
+	spring
+	ssh-agent
 	sublime
 	sudo
 	supervisor
+	thefuck
+	themes
+	urltools
 	web-search
-	history
-	mvn
-	zsh-aliases-exa
-	kubectl
 	#z
+	zsh-aliases-exa
 )
-
-# completion function debugging
-#zstyle ':completion:*' verbose yes
-#zstyle ':completion:*:descriptions' format '%B%d%b'
-#zstyle ':completion:*:messages' format '%d'
-#zstyle ':completion:*:warnings' format 'No matches for: %d'
-#zstyle ':completion:*' group-name ''
-#ZSH_DISABLE_COMPFIX=false
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -136,53 +118,94 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
+################################
+# SSH
+################################
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# source all alias files
-#echo 'Sourcing aliases'
+################################
+# Custom
+################################
 for alias_file ($DOTFILES/alias/*.sh); do
         source $alias_file
 done
 
-#echo 'Sourcing functions'
 for function_file ($DOTFILES/functions/*.sh); do
         source $function_file
 done
 
-cowalias
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-#hardwire java 8
+################################
+# Java
+################################
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
+
+################################
+# Gradle
+################################
 export GRADLE_HOME=$(brew info gradle | grep /usr/local/Cellar/gradle | awk '{print $1}')
 
+################################
+# Git
+################################
+# enable git-extras autocompletion
 source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
+################################
+# ZSH
+################################
+# enable zsh-completions manually since OMZ expects a different plugin structure than zsh-completions has
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+################################
+# direnv - https://direnv.net/
+################################
 eval "$(direnv hook zsh)"
 
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
-
+################################
+# Python
+################################
 eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
 
+################################
+# Kubectl
+################################
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
-# set iterm titel to current dir
+################################
+# iTerm
+################################
+# set iterm tab titel to current dir
 precmd() {
-  # sets the tab title to current dir
   echo -ne "\e]1;${PWD##*/}\a"
 }
 
+# enable iTerm shell integrations
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+################################
+# GO
+################################
+export GOPATH="${HOME}/go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+
+################################
+# SDKMAN
+################################
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/ben/.sdkman"
 [[ -s "/Users/ben/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ben/.sdkman/bin/sdkman-init.sh"
+
+################################
+# OpenSSL
+################################
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+
+cowalias

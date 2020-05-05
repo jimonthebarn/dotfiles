@@ -6,4 +6,4 @@ alias j10='export JAVA_HOME="$(/usr/libexec/java_home -v 10)"; javaVersion'
 alias j11='export JAVA_HOME="$(/usr/libexec/java_home -v 11)"; javaVersion'
 alias java_pids='pgrep java'
 alias java_pids2='ps -ef | grep java | cut -f 4 -d " "'
-alias killJava='kill -9 $(pgrep java)'
+#alias killJava='kill -9 $(pgrep java)' # have a function for that
