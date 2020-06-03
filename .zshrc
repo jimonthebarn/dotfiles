@@ -145,7 +145,7 @@ done
 # Git
 ################################
 # enable git-extras autocompletion
-if [ /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh ]; then source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+if [ /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh ]; then source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh; fi
 
 ################################
 # ZSH
