@@ -37,6 +37,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 DISABLE_UPDATE_PROMPT=true
 
