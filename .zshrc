@@ -135,15 +135,10 @@ for function_file ($DOTFILES/functions/*.sh); do
 done
 
 ################################
-# Java
-################################
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-
-
-################################
 # Gradle
 ################################
-export GRADLE_HOME=$(brew info gradle | grep /usr/local/Cellar/gradle | awk '{print $1}')
+# find os agnostic way
+#export GRADLE_HOME=$(brew info gradle | grep /usr/local/Cellar/gradle | awk '{print $1}')
 
 ################################
 # Git
