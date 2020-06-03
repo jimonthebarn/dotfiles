@@ -1,8 +1,8 @@
 echo "ZSH config"
 
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 #install .oh-my-zsh
-[ ! -d "~/.oh-my-zsh" ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+[ ! -d "${HOME}/.oh-my-zsh" ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo "ZSH Done!"
