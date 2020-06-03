@@ -28,10 +28,10 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 export TERM="xterm-256color"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/Users/ben/AppLauncher:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$HOME/AppLauncher:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/$USER/.oh-my-zsh
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -121,7 +121,7 @@ source $ZSH/oh-my-zsh.sh
 ################################
 # SSH
 ################################
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="${HOME}/.ssh/rsa_id"
 
 ################################
 # Custom
@@ -197,8 +197,8 @@ test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 # SDKMAN
 ################################
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/ben/.sdkman"
-[[ -s "/Users/ben/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ben/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="${HOME}/.sdkman"
+[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
 ################################
 # OpenSSL
@@ -211,7 +211,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 ################################
 # SVH
 ################################
-export SH_CLI_HOME=/Users/ben/Workspace/smarthub/cloud/smarthub-client-cli
+export SH_CLI_HOME="${HOME}/Workspace/smarthub/cloud/smarthub-client-cli"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
