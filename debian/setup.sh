@@ -10,6 +10,9 @@
 #install npm
 curl -L https://npmjs.org/install.sh | sudo zsh
 
+#install git-extras
+sudo apt-get install git-extras
+
 #install thefuck
 sudo apt update
 sudo apt install python3-dev python3-pip python3-setuptools
