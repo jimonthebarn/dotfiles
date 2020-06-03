@@ -166,7 +166,7 @@ eval "$(direnv hook zsh)"
 # Python
 ################################
 eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv virtualenv-init -)"
 
 ################################
 # Kubectl
@@ -207,6 +207,11 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+
+################################
+# SVH
+################################
+export SH_CLI_HOME=/Users/ben/Workspace/smarthub/cloud/smarthub-client-cli
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
