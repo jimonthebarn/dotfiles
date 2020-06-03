@@ -11,6 +11,6 @@
 . ./git/git.sh
 
 echo "Copying dotfiles from Github"
-cd ~
+cd ~ || exit
 git clone --recursive git@github.com:jimonthebarn/dotfiles.git dotfiles
 cd ~/dotfiles && rake
