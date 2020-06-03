@@ -35,6 +35,24 @@ git clone --depth=1 https://github.com/romkatv/gitstatus.git ~/gitstatus
 echo 'source ~/gitstatus/gitstatus.prompt.zsh' >>! ~/.zshrc
 ```
 
+Users in mainland China can use the official mirror on gitee.com for faster download.<br>
+中国大陆用户可以使用 gitee.com 上的官方镜像加速下载.
+
+```zsh
+git clone --depth=1 https://gitee.com/romkatv/gitstatus.git ~/gitstatus
+echo 'source ~/gitstatus/gitstatus.prompt.zsh' >>! ~/.zshrc
+```
+
+Alternatively, on macOS you can install with Homebrew:
+
+```zsh
+brew install romkatv/gitstatus/gitstatus
+echo 'source /usr/local/opt/gitstatus/gitstatus.prompt.zsh' >>! ~/.zshrc
+```
+
+(If you choose this option, replace `~/gitstatus` with `/usr/local/opt/gitstatus` in all code
+snippets below.)
+
 _Make sure to disable your current theme if you have one._
 
 This will give you a basic yet functional prompt with git status in it. It's
@@ -117,6 +135,24 @@ The easiest way to take advantage of gitstatus from Bash is via
 git clone --depth=1 https://github.com/romkatv/gitstatus.git ~/gitstatus
 echo 'source ~/gitstatus/gitstatus.prompt.sh' >> ~/.bashrc
 ```
+
+Users in mainland China can use the official mirror on gitee.com for faster download.<br>
+中国大陆用户可以使用 gitee.com 上的官方镜像加速下载.
+
+```bash
+git clone --depth=1 https://gitee.com/romkatv/gitstatus.git ~/gitstatus
+echo 'source ~/gitstatus/gitstatus.prompt.sh' >> ~/.bashrc
+```
+
+Alternatively, on macOS you can install with Homebrew:
+
+```zsh
+brew install romkatv/gitstatus/gitstatus
+echo 'source /usr/local/opt/gitstatus/gitstatus.prompt.sh' >> ~/.bashrc
+```
+
+(If you choose this option, replace `~/gitstatus` with `/usr/local/opt/gitstatus` in all code
+snippets below.)
 
 This will give you a basic yet functional prompt with git status in it. It's
 [over 10x faster](#benchmarks) than any alternative that can give you comparable prompt.
@@ -455,6 +491,15 @@ cd gitstatus
 ./build -w -s -d docker
 ```
 
+Users in mainland China can use the official mirror on gitee.com for faster download.<br>
+中国大陆用户可以使用 gitee.com 上的官方镜像加速下载.
+
+```zsh
+git clone --depth=1 https://gitee.com/romkatv/gitstatus.git
+cd gitstatus
+./build -w -s -d docker
+```
+
 - If it says that `-d docker` is not supported on your OS, remove this flag.
 - If it says that `-s` is not supported on your OS, remove this flag.
 - If it tell you to install docker but you cannot or don't want to, remove `-d docker`.
@@ -466,47 +511,17 @@ by shell bindings automatically.
 When you update shell bindings, they may refuse to work with the binary you've built earlier. In
 this case you'll need to rebuild.
 
+If you are using gitstatus through [Powerlevel10k](https://github.com/romkatv/powerlevel10k), the
+instructions are the same except that you don't need to clone gitstatus. Instead, change your
+current directory to `/path/to/powerlevel10k/gitstatus` (`/path/to/powerlevel10k` is the directory
+where you've installed Powerlevel10k) and run `./build -w -s -d docker` from there as described
+above.
+
 ### Compiling for distribution
 
-If you want to package gitstatus, it's best to do it based off releases. You also probably don't
-want to build in docker (`-d docker`) or to allow automatic downloading of libgit2 tarballs (`-w`).
-
-The following code should work. If it doesn't, please open an issue.
-
-**IMPORTANT:** *Change version to what you want to package. This example doesn't get updated when
-new versions are released.*
-
-```zsh
-curl -fsSLO https://github.com/romkatv/gitstatus/archive/v1.0.0.tar.gz
-tar -xzf v1.0.0.tar.gz
-cd gitstatus-1.0.0
-(
-  . ./build.info
-  curl -fsSLo                              \
-    deps/libgit2-"$libgit2_version".tar.gz \
-    https://github.com/romkatv/libgit2/archive/"$libgit2_version".tar.gz
-)
-./build
-rm deps/libgit2-*.tar.gz
-for file in *.zsh install; do
-  zsh -fc "zcompile -R -- $file.zwc $file"
-done
-```
-
-This needs binutils, cmake, gcc, g++, git, GNU make and zsh.
-
-Depending on your workflow, it might be easier to store the URL to the libgit2 tarball in the
-same place where you are going to put the main gitstatus tarball URL. You'll need to update both
-URLs at the same time when bumping package version.
-
-Once build completes, *do not delete or move any files*. Package the whole directory as is. Don't
-add it (or any of its subdirectories) to `PATH`.
-
-Note that Powerlevel10k has an embedded version of gitstatus. It must stay that way. The embedded
-gitstatus won't conflict with the standalone version. They can have different versions and can
-coexist within the same Zsh process. Do not attempt to surgically remove gitstatus from
-Powerlevel10k, package the result and then somehow force Powerlevel10k to use a separately packaged
-gitstatus.
+It's currently neither easy nor recommended to package and distribute gitstatus. There are no
+instructions you can follow that would allow you to easily update your package when new versions of
+gitstatus are released. This may change in the future but not soon.
 
 ## License
 

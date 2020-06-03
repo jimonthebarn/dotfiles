@@ -23,6 +23,8 @@ else
   function restore_screen() {}
 fi
 
+local -i success=0
+
 {  # always
 
 local -ri force
@@ -234,7 +236,10 @@ function show_cursor() {
 
 function consume_input() {
   local key
-  while read -t0 key; do true; done
+  while true; do
+    [[ -t 2 ]]
+    read -t0 -k key || break
+  done 2>/dev/null
 }
 
 function quit() {
@@ -271,6 +276,7 @@ function quit() {
     print -P "  %2Fp10k%f %Bconfigure%b"
     print -P ""
   fi
+  function quit() {}
   exit 1
 }
 
@@ -304,7 +310,6 @@ functions -M get_columns 0 0
 function render_screen() {
   {
     hide_cursor
-    stty -echo 2>/dev/null
     while true; do
       while true; do
         typeset -gi wizard_columns='get_columns()'
@@ -356,7 +361,6 @@ function render_screen() {
       done
     done
   } always {
-    stty echo 2>/dev/null
     show_cursor
   }
 }
@@ -704,16 +708,16 @@ function ask_lock() {
 }
 
 function ask_python() {
-  add_widget 0 add_widget 0 flowing -c %BDoes this look like a "%b%2FPython logo%f%B?%b"
-  add_widget 0 add_widget 0 flowing -c reference: "$(href https://fontawesome.com/icons/python)"
-  add_widget 0 add_widget 0 print -P ""
-  add_widget 0 add_widget 0 flowing -c -- "--->  \uE63C  <---"
-  add_widget 0 add_widget 0 print -P ""
-  add_widget 0 add_widget 0 print -P "%B(y)  Yes.%b"
-  add_widget 0 add_widget 0 print -P ""
-  add_widget 0 add_widget 0 print -P "%B(n)  No.%b"
-  add_widget 0 add_widget 0 print -P ""
-  add_widget 0 add_widget 0 print -P "(r)  Restart from the beginning."
+  add_widget 0 flowing -c %BDoes this look like a "%b%2FPython logo%f%B?%b"
+  add_widget 0 flowing -c reference: "$(href https://fontawesome.com/icons/python)"
+  add_widget 0 print -P ""
+  add_widget 0 flowing -c -- "--->  \uE63C  <---"
+  add_widget 0 print -P ""
+  add_widget 0 print -P "%B(y)  Yes.%b"
+  add_widget 0 print -P ""
+  add_widget 0 print -P "%B(n)  No.%b"
+  add_widget 0 print -P ""
+  add_widget 0 print -P "(r)  Restart from the beginning."
   ask ynr
   case $choice in
     r) return 1;;
@@ -1913,6 +1917,8 @@ else
   local -ir has_truecolor=0
 fi
 
+stty -echo 2>/dev/null
+
 while true; do
   local instant_prompt=verbose zshrc_content= zshrc_backup= zshrc_backup_u=
   local -i zshrc_has_cfg=0 zshrc_has_instant_prompt=0 write_zshrc=0
@@ -1934,7 +1940,7 @@ while true; do
 
   unset pure_use_rprompt
 
-  if [[ $langinfo[CODESET] == (utf|UTF)(-|)8 ]]; then
+  if [[ $TERM != (dumb|linux) && $langinfo[CODESET] == (utf|UTF)(-|)8 ]]; then
     ask_font || continue
     ask_diamond || continue
     if [[ $AWESOME_GLYPHS_LOADED == 1 ]]; then
@@ -2051,7 +2057,10 @@ print -rP ""
 flowing +c File feature requests and bug reports at "$(href https://github.com/romkatv/powerlevel10k/issues)"
 print -rP ""
 
+success=1
+
 } always {
+  (( success )) || quit
   consume_input
   stty echo 2>/dev/null
   show_cursor

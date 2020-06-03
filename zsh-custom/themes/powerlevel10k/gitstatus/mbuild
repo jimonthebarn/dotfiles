@@ -46,7 +46,7 @@
 #     ps> C:\msys64\autorebase.bat
 # - Install 64-bit and 32-bit cygwin: https://cygwin.com/install.html.
 #   - Choose to install 32-bit to c:/cygwin32 instead of the default c:/cygwin.
-#   - Select these packages: binutils, cmake, gcc-core, gcc-g++, git, make, wget.
+#   - Select these packages: binutils, cmake, gcc-core, gcc-g++, git, make, perl, wget.
 #
 # IMPORTANT: Install msys2 and cygwin one at a time.
 #
@@ -151,7 +151,7 @@ done
 
 shift $((OPTIND - 1))
 
-(( $# )) || set -- ${(k)assets}
+(( $# )) || set -- ${(ko)assets}
 set -- ${(u)@}
 
 local platform
@@ -200,15 +200,22 @@ function build-windows() {
 
   local tmp env bin intro flags=(-w)
   case $2 in
-    msys_nt-10.0-i686)     bin='msys32/usr/bin';|
-    msys_nt-10.0-x86_64)   bin='msys64/usr/bin';|
     cygwin_nt-10.0-i686)   bin='cygwin32/bin'  ;|
     cygwin_nt-10.0-x86_64) bin='cygwin64/bin'  ;|
+    msys_nt-10.0-i686)     bin='msys32/usr/bin';|
+    msys_nt-10.0-x86_64)   bin='msys64/usr/bin';|
+    cygwin_nt-10.0-*)
+      tmp='/cygdrive/c/tmp'
+    ;|
     msys_nt-10.0-*)
       flags+=(-s)
       tmp='/c/tmp'
       env='MSYSTEM=MSYS'
+      intro='pacman -Syu --noconfirm; pacman -S --needed --noconfirm git; '
+      intro+='PATH="$PATH:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"'
       while true; do
+        # TODO: run autorebase only when getting an error that can be fixed by autorebasing.
+        break
         local out
         out="$(ssh $1 cmd.exe "$c/${bin%%/*}/autorebase.bat" 2>&1)"
         [[ $out == *"The following DLLs couldn't be rebased"* ]] || break
@@ -243,12 +250,7 @@ function build-windows() {
           }
         done
       } "$@"
-      intro='pacman -Syu --noconfirm; pacman -S --needed --noconfirm git; '
-      intro+='PATH="$PATH:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"'
-    ;;
-    cygwin_nt-10.0-*)
-      tmp='/cygdrive/c/tmp'
-    ;;
+    ;|
   esac
 
   ssh $1 $c/$bin/env.exe $env c:/$bin/bash.exe -l <<<"
@@ -281,17 +283,24 @@ function mbuild() {
     print -r -- "starting build for $platform on $assets[$platform] (pid $!)"
     pids+=($platform $!)
   done
+  local failed=()
   for platform pid in $pids; do
     print -rn -- "$platform => "
     if wait $pid; then
       print -r -- "ok"
     else
-      print -r -- "error $?"
-      print -r -- "---------------------"
-      >&2 cat $logs/$platform
-      return 1
+      print -r -- "error"
+      failed+=$platform
     fi
   done
+  (( $#failed )) || return 0
+  print
+  print -r -- "Error logs:"
+  print
+  for platform in $failed; do
+    print -r -- "  $platform => $logs/$platform"
+  done
+  return 1
 }
 
 # Copied from https://github.com/romkatv/run-process-tree.
