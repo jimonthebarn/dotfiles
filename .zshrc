@@ -64,7 +64,7 @@ plugins=(
 	bgnotify
 	bower
 	brew
-	cask
+	#cask
 	colored-man-pages
 	colorize
 	colorize
