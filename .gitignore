@@ -2,3 +2,5 @@
 *.log
 
 .gitconfig.sublime-workspace
+
+.idea/
