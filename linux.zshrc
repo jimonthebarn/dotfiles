@@ -59,11 +59,8 @@ ZSH_CUSTOM=$DOTFILES/zsh-custom
 # Custom plugins may be added to ~/dotfiles/zsh-custom/plugins/
 plugins=(
 	adb
-	#autojump
 	bgnotify
 	bower
-	brew
-	#cask
 	colored-man-pages
 	colorize
 	colorize
@@ -74,12 +71,10 @@ plugins=(
 	git-extras
 	git-flow
 	github
-	#globalias
 	golang
 	gradle
 	history
 	httpie
-	kubectl
 	kubectl
 	mvn
 	npm
@@ -98,7 +93,6 @@ plugins=(
 	themes
 	urltools
 	web-search
-	#z
 	zsh-aliases-exa
 )
 
