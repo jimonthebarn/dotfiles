@@ -91,7 +91,7 @@ plugins=(
 	safe-paste
 	sdk
 	spring
-	#ssh-agent
+	ssh-agent
 	sublime
 	sudo
 	supervisor
