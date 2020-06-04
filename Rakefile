@@ -9,36 +9,47 @@
 
 require 'rake'
 require 'fileutils'
+require 'os'
 
 # These are all the files we want to symlink to ~
-FILES = '.oh-my-zsh .gitconfig .gitexcludes .zshrc .maid'
-
+# key is the name of the symlink, value the actual file name
+FILES = {
+		".oh-my-zsh" => ".oh-my-zsh",
+		".gitconfig" => ".gitconfig",
+		".gitexcludes" => ".gitexcludes",
+		".maid" => ".maid"
+}
 
 task :default => 'install'
 
 desc "Hook our dotfiles into system-standard positions."
 task :install do
-	FILES.split.each do |file|
-		symlink_file( file )
+
+  # Enable linking of different files per platform
+	if OS.mac?
+		puts "This is a mac"
+		FILES[".zshrc"] = "mac.zshrc"
+  end
+
+  if OS.linux?
+		puts "This is a linux"
+		FILES[".zshrc"] = "linux.zshrc"
+  end
+  # if OS.windows?
+	# 	puts "This is a windows"
+  # end
+  # if OS.java?
+	# 	puts "This is a java"
+  # end
+
+	FILES.each do |symlinkFileName, actualFileName|
+		symlink_file( symlinkFileName, actualFileName )
 	end
 end
 
-# Run as rake setup_file[file_name]
-# Zsh will be kind of weird with the brackets, so do this:
-# 	rake 'setup_file[.my_dot_file]'
-# unless you add 'unsetopt nomatch' to .zshrc, then you're good to go without the quotes
-# symlink multiple files at once
-# rake setup_file['.maid .vimrc .hushlogin']
-desc "Symlink arbitrary files."
-task :setup_file, [:file ] do |t, file|
-	"#{file[:file]}".split.each do |single_file|
-	  symlink_file( single_file )
-	end
-end
-
-def symlink_file( file )
-	source = "#{ENV["PWD"]}/#{file}"
-	target = "#{ENV["HOME"]}/#{file}"
+def symlink_file( symlinkFileName, actualFileName )
+	source = "#{ENV["PWD"]}/#{actualFileName}"
+	target = "#{ENV["HOME"]}/#{symlinkFileName}"
 
 	puts "Source: #{source}"
 	puts "Target: #{target}"
