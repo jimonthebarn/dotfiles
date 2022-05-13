@@ -15,3 +15,6 @@
 	template = ~/.gitmessage
 [credential]
 	helper = osxkeychain
+[url "git@github.com:"]
+    # force ssh for github
+	insteadOf = https://github.com/
