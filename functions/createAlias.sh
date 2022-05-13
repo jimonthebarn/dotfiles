@@ -1,16 +1,20 @@
 createAlias() {
     if [[ $# -eq 3 ]]; then
-        if which $2 > /dev/null; then
-            echo "Alias $2 already exists."
+        local FILENAME=$1
+        local ALIAS=$2
+        local VALUE=$2
+        if which "$ALIAS" > /dev/null; then
+            echo "Alias $ALIAS already exists."
         else
-            echo "alias $2=\"$3\"" >> ~/dotfiles/alias/$1.sh
-            source ~/dotfiles/alias/$1.sh
+            echo "alias $ALIAS=\"$VALUE\"" >> "$HOME/dotfiles/alias/$FILENAME"
+            # shellcheck source=src/util.sh
+            source "$HOME/dotfiles/alias/$FILENAME.sh"
         fi
     elif [[ $# -eq 2 ]]; then
         createAlias general "$1 $2"
     else
-        echo "Usage: \tcreateAlias <fileNameWithoutExtension> <aliasName> <alias>"
-        echo "Example: \tcreateAlias npm nis 'npm install -save'"
+        printf "Usage: \tcreateAlias <fileNameWithoutExtension> <aliasName> <alias>"
+        printf "Example: \tcreateAlias npm nis 'npm install -save'"
         return 1
     fi
 }

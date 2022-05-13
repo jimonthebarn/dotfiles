@@ -1,11 +1,11 @@
 gcdir() {
-    REPO=$1
-    CLONEPATH=$2
+    local REPO=$1
+    local CLONEPATH=$2
 
-    if [ -z $CLONEPATH ]; then
-        CLONEPATH=${$(basename $1)/.git/}
+    if [ -z "$CLONEPATH" ]; then
+        CLONEPATH=${$(basename "$REPO")/.git/}
     fi
 
-    git clone $REPO $CLONEPATH
-    cd $CLONEPATH
+    git clone "$REPO" $CLONEPATH
+    cd $CLONEPATH || exit 1
 }

@@ -6,6 +6,6 @@ up() {
     do
         P=$P/..
     done
-    cd $P
+    cd "$P" || exit 1
     export MPWD=$P
 }
