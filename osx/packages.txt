@@ -1,0 +1,10 @@
+cowsay \
+fortune \
+git \
+git-extras \
+git-flow \
+httpie \
+imagemagick \
+legit \
+trash \
+wget \

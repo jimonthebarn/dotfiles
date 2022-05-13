@@ -28,12 +28,12 @@ task :install do
   # Enable linking of different files per platform
 	if OS.mac?
 		puts "This is a mac"
-		FILES[".zshrc"] = "mac.zshrc"
+		FILES[".zshrc"] = "osx/.zshrc"
   end
 
   if OS.linux?
 		puts "This is a linux"
-		FILES[".zshrc"] = "linux.zshrc"
+		FILES[".zshrc"] = "debian/.zshrc"
   end
   # if OS.windows?
 	# 	puts "This is a windows"
