@@ -9,5 +9,8 @@ fi
 
 chsh -s "$(command -v zsh)"
 
+# make sure os gem is present
+gem install os
+
 #symlink our dotfiles into default locations in the homedir
 cd ~/dotfiles && rake

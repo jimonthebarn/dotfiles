@@ -5,10 +5,9 @@
 . ./brew/brew.sh
 
 # osx init
-. ./osx/osx.sh
 
-# osx init
-. ./git/git.sh
+# hold off our horses here for the mac specific stuff as it has not been reviewed for quote some time
+# . ./osx/osx.sh
 
 echo "Copying dotfiles from Github"
 cd ~ || exit
