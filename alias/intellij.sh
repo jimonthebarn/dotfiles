@@ -1,0 +1,1 @@
+alias ij='idea -e'

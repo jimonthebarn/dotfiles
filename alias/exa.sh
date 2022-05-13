@@ -3,3 +3,4 @@ alias exa='exa --git --color=always --color-scale --header --long --group --time
 alias exan='exa --sort=newest'
 alias exas='exa --sort=size'
 alias exat='exa --tree'
+alias ls='exa'
