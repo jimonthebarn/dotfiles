@@ -83,6 +83,7 @@ brew "tmonfre/tmonfre/zoom"
 cask "mockoon"
 cask "ngrok"
 cask "rq"
+cask "sublime-text"
 cask "vagrant"
 cask "virtualbox"
 mas "1Password", id: 443987910
