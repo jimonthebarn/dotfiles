@@ -1,3 +1,3 @@
-alias zshconf="sublime ~/.zshrc"
-alias omzconf="sublime ~/.oh-my-zsh"
-alias gradleconf="sublime ~/.gradle/gradle.properties"
+alias zshconf="subl ~/.zshrc"
+alias omzconf="subl ~/.oh-my-zsh"
+alias gradleconf="subl ~/.gradle/gradle.properties"

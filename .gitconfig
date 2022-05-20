@@ -4,7 +4,7 @@
    browser = google-chrome
 [core]
 	excludesFile = ~/.gitignore
-    #editor = sublime --project ~/dotfiles/.gitconfig.sublime-project --wait
+    editor = subl --wait
 [user]
 	name = Benjamin Roth
 	email = roth.benjamin@gmail.com
