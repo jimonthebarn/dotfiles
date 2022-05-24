@@ -8,9 +8,10 @@ fi
 POWERLEVEL9K_INSTANT_PROMPT=quiet
 GITSTATUS_LOG_LEVEL=DEBUG
 
+export PATH="/usr/local/sbin:$PATH"
 # setup avs sdk (remove?)
-export PATH="/usr/local/opt/curl/bin:$PATH"
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
+#export PATH="/usr/local/opt/curl/bin:$PATH"
+#export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # export ssh key path
 #export SSH_KEY_PATH="${HOME}/.ssh/rsa_id"
@@ -106,7 +107,7 @@ plugins=(
   history
   httpie
   iterm2
-  keychain
+  #keychain
   kubectl
   macos
   mvn
@@ -115,14 +116,13 @@ plugins=(
   pipenv
   safe-paste
   sdk
-  spring
+  #spring
   sublime
   postgres
   ssh-agent
   sudo
-  supervisor
   thefuck
-  themes
+  #themes
   urltools
   web-search
   vscode
@@ -159,10 +159,6 @@ for file in ~/dotfiles/functions/*(.); source $file
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-# Init SDKman: THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="~/.sdkman"
-[[ -s "~/.sdkman/bin/sdkman-init.sh" ]] && source "~/.sdkman/bin/sdkman-init.sh"
-
 # Init FASD
 eval "$(fasd --init auto)"
 
@@ -181,3 +177,8 @@ if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 # Iterm shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Init SDKman: THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
