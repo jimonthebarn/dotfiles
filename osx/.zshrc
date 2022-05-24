@@ -93,7 +93,9 @@ export DOTFILES="$(dirname "$(readlink "$HOME/.zshrc")")"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   brew
+  bgnotify
   cask
+  chucknorris
   colored-man-pages
   colorize
   command-not-found
@@ -105,8 +107,9 @@ plugins=(
   golang
   gradle
   history
+  hitchhiker
   httpie
-  iterm2
+  #iterm2
   #keychain
   kubectl
   macos
@@ -141,7 +144,7 @@ source $ZSH/oh-my-zsh.sh
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='subl -w'
+   export EDITOR='subl'
  fi
 
 # Compilation flags
@@ -181,4 +184,3 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Init SDKman: THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
