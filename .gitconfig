@@ -11,6 +11,7 @@
 	useConfigOnly = true
 [init]
 	templatedir = ~/.git-templates
+	defaultBranch = main
 [commit]
 	template = ~/.gitmessage
 [credential]
