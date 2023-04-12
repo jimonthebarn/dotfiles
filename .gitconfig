@@ -5,17 +5,24 @@
 [core]
 	excludesFile = ~/.gitignore
     editor = subl --wait
+	autocrlf = input
 [user]
 	name = Benjamin Roth
 	email = roth.benjamin@gmail.com
 	useConfigOnly = true
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOeAnCfo/ocQ5/rigj13dv/azWWwKgmUlekBSbdaTWzT
 [init]
 	templatedir = ~/.git-templates
 	defaultBranch = main
 [commit]
 	template = ~/.gitmessage
+	gpgsign = true
 [credential]
 	helper = osxkeychain
 [url "git@github.com:"]
     # force ssh for github
 	insteadOf = https://github.com/
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign

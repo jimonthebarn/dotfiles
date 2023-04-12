@@ -6,3 +6,4 @@ alias hitch="hitchhiker_cow | lolcat"
 alias ll="ls -lha"
 alias cd..="cd .."
 alias youtube-dl='youtube-dl -f best --no-cache-dir'
+alias cat='bat'

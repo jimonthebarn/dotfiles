@@ -8,7 +8,12 @@ fi
 POWERLEVEL9K_INSTANT_PROMPT=quiet
 GITSTATUS_LOG_LEVEL=DEBUG
 
+export GITLAB_TOKEN=glpat-zP97K9qjBvUPorwxSxYb
+
 export PATH="/usr/local/sbin:$PATH"
+
+# add when-cli
+export PATH="$HOME/.cargo/bin:$PATH"
 # setup avs sdk (remove?)
 #export PATH="/usr/local/opt/curl/bin:$PATH"
 #export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
@@ -27,6 +32,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # set dotfiles env var to the dotfiles directory
 export DOTFILES="$(dirname "$(readlink "$HOME/.zshrc")")"
+
+# make sublime default editor for kubectl
+export KUBE_EDITOR="/usr/local/bin/subl -w"
 
 #source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 #PS1='$(kube_ps1)'$PS1
@@ -101,7 +109,6 @@ plugins=(
   command-not-found
   docker
   encode64
-  fasd
   git
   github
   golang
@@ -129,6 +136,7 @@ plugins=(
   urltools
   web-search
   vscode
+  zoxide
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
@@ -164,8 +172,11 @@ for file in ~/dotfiles/functions/*(.); source $file
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-# Init FASD
-eval "$(fasd --init auto)"
+# Init Zoxide
+eval "$(zoxide init zsh)"
+
+# fzf: fuzzy matching and keybindings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Init NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -183,6 +194,12 @@ if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 # Iterm shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Dasel
+export fpath=(~/zsh/site-functions $fpath)
+mkdir -p ~/zsh/site-functions
+dasel completion zsh > ~/zsh/site-functions/_dasel
+compinit
+
 # Python pyenv setup
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -190,6 +207,10 @@ eval "$(pyenv init -)"
 
 # python: virtualenv init
 eval "$(pyenv virtualenv-init -)"
+
+# go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # Init SDKman: THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
