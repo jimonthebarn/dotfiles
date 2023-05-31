@@ -94,9 +94,12 @@ brew "mike-engel/jwt-cli/jwt-cli"
 brew "mongodb/brew/mongodb-community"
 brew "tankerhq/repo/ruplacer"
 brew "tmonfre/tmonfre/zoom"
+cask "1password"
 cask "mockoon"
 cask "ngrok"
 cask "rq"
+cask "spotify"
+cask "sublime-text"
 cask "vagrant"
 mas "1Password", id: 443987910
 mas "1Password for Safari", id: 1569813296
