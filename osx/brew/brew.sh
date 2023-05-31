@@ -1,4 +1,4 @@
-printf "Homebrew init"
+echo "Homebrew init"
 
 # Check for Homebrew,
 # Install if we don't have it
@@ -11,10 +11,10 @@ fi
 echo "Updating homebrew..."
 brew update
 
-printf "Install homebrew packages..."
+echo "Install homebrew packages..."
 # Maintenance task: Use the following to create a new bundle based on what is currently installed:
-# brew bundle dump
-brew bundle --file ./Brewfile
+# brew bundle dump --force
+brew bundle --file ./osx/brew/Brewfile
 
 echo "Cleaning up homebrew..."
 brew cleanup

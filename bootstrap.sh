@@ -2,7 +2,7 @@
 if command apt > /dev/null; then
   ./debian/setup.sh
 elif [ "$(uname)" == "Darwin" ]; then
-	./osx/setup.zsh
+	./osx/setup.sh
 fi
 
 chsh -s "$(command -v zsh)"
