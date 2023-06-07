@@ -12,6 +12,7 @@ Thumbs.db
 
 # Intellij
 .idea/
+http-client.private.env.json
 
 # SDKman auto init
 .sdkmanrc
