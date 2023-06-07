@@ -1,6 +1,11 @@
+# General
+*.log
+
 # Mac OSX
 .DS_Store
-*.log
+
+# Windows
+Thumbs.db
 
 # Sublime
 .gitconfig.sublime-workspace
