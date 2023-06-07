@@ -1,8 +1,16 @@
+# Mac OSX
 .DS_Store
 *.log
 
+# Sublime
 .gitconfig.sublime-workspace
 
+# Intellij
 .idea/
 
-.bundle/
+# SDKman auto init
+.sdkmanrc
+
+# Azure jump host file
+az_ssh_config
+jump-config

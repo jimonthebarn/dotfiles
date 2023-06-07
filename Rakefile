@@ -16,7 +16,7 @@ require 'os'
 FILES = {
 		".oh-my-zsh" => ".oh-my-zsh",
 		".gitconfig" => ".gitconfig",
-		".gitexcludes" => ".gitexcludes",
+		".gitignore" => ".gitignore",
 		".maid" => ".maid"
 }
 
@@ -58,6 +58,6 @@ def symlink_file( symlinkFileName, actualFileName )
 		puts "[Overwriting] #{target}..."
 	end
 
-	`ln -nfs "#{source}" "#{target}" `
+	`ln -nfs "#{source}" "#{target}"`
 
 end
