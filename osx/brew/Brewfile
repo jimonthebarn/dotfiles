@@ -1,4 +1,6 @@
+tap "1password/tap"
 tap "aquasecurity/trivy"
+tap "azure/kubelogin"
 tap "derailed/popeye"
 tap "farmotive/k8s"
 tap "homebrew/bundle"
@@ -87,18 +89,24 @@ brew "yq"
 brew "zoxide"
 brew "zsh-syntax-highlighting"
 brew "aquasecurity/trivy/trivy"
+brew "azure/kubelogin/kubelogin"
 brew "derailed/popeye/popeye"
 brew "mike-engel/jwt-cli/jwt-cli"
 brew "mongodb/brew/mongodb-community"
 brew "tankerhq/repo/ruplacer"
 brew "tmonfre/tmonfre/zoom"
 cask "1password"
+cask "1password-cli"
+cask "bartender"
 cask "mockoon"
 cask "ngrok"
 cask "rq"
+cask "slack"
 cask "spotify"
 cask "sublime-text"
 cask "vagrant"
 mas "1Password", id: 443987910
 mas "1Password for Safari", id: 1569813296
+mas "Parcel", id: 639968404
+mas "Reeder", id: 1529448980
 mas "ToDo", id: 1498581975
