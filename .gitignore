@@ -17,6 +17,9 @@ http-client.private.env.json
 # SDKman auto init
 .sdkmanrc
 
+# Node version manager
+.nvmrc
+
 # Azure jump host file
 az_ssh_config
 jump-config
