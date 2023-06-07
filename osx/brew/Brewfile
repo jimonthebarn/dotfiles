@@ -76,6 +76,7 @@ brew "redis"
 brew "repo"
 brew "ripgrep"
 brew "spoof-mac"
+brew "sshuttle"
 brew "terminal-notifier"
 brew "the_silver_searcher"
 brew "thefuck"
@@ -107,6 +108,11 @@ cask "sublime-text"
 cask "vagrant"
 mas "1Password", id: 443987910
 mas "1Password for Safari", id: 1569813296
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
 mas "Parcel", id: 639968404
 mas "Reeder", id: 1529448980
 mas "ToDo", id: 1498581975
