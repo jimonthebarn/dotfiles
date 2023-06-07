@@ -17,7 +17,8 @@ FILES = {
 		".oh-my-zsh" => ".oh-my-zsh",
 		".gitconfig" => ".gitconfig",
 		".gitignore" => ".gitignore",
-		".maid" => ".maid"
+		".maid" => ".maid",
+		".p10k.zsh" => ".p10k.zsh"
 }
 
 task :default => 'install'
