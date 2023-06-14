@@ -1,0 +1,2 @@
+# expose actuator endpoints on e.g. http://localhost:8080/actuator/env
+management.endpoints.web.exposure.include: env,health

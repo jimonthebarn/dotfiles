@@ -11,6 +11,9 @@ require 'rake'
 require 'fileutils'
 require 'os'
 
+# Create folder if not present
+FileUtils.mkdir_p "#{ENV["HOME"]}/.config/spring-boot"
+
 # These are all the files we want to symlink to ~
 # key is the name of the symlink, value the actual file name
 FILES = {
@@ -18,7 +21,8 @@ FILES = {
 		".gitconfig" => ".gitconfig",
 		".gitignore" => ".gitignore",
 		".maid" => ".maid",
-		".p10k.zsh" => ".p10k.zsh"
+		".p10k.zsh" => ".p10k.zsh",
+		".config/spring-boot/spring-boot-devtools.yml" => "dev/spring-boot-devtools.yml"
 }
 
 task :default => 'install'
