@@ -1,0 +1,1 @@
+alias weatherd='http wttr.in/Darmstadt'
