@@ -1,5 +1,3 @@
-#!/bin/bash
-
 kill_java() {
     java_pids="$(pgrep java)"
     pids_number=$(pgrep java | wc -l)
