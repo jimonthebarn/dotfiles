@@ -1,2 +1,24 @@
 # expose actuator endpoints on e.g. http://localhost:8080/actuator/env
-management.endpoints.web.exposure.include: env,health
+management.endpoints.web.exposure.include:
+    - auditevents
+    - beans
+    - caches
+    - conditions
+    - configprops
+    - env
+    - flyway
+    - health
+    - httpexchanges
+    - info
+    - integrationgraph
+    - loggers
+    - liquibase
+    - metrics
+    - mappings
+    - quartz
+    - scheduledtasks
+    - sessions
+    - shutdown
+    - startup
+    - threaddump
+
