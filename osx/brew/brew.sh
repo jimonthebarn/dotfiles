@@ -14,7 +14,7 @@ brew update
 echo "Install homebrew packages..."
 # Maintenance task: Use the following to create a new bundle based on what is currently installed:
 # create new: brew bundle dump --force
-# update Brewfile according to your current setup: brew bundle --force cleanup
+# update Brewfile according to your current setup: brew bundle dump --force
 brew bundle --file ./osx/brew/Brewfile
 
 echo "Cleaning up homebrew..."
